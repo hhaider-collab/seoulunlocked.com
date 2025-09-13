@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Seoul Unlocked - Custom Guided Tours and Experiences</title>
+  <title>SeoulUnlocked - Custom Guided Tours and Experiences</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -129,4 +129,53 @@
     }
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2
+        font-size: 2rem;
+      }
+      .testimonial {
+        width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SeoulUnlocked</h1>
+    <p>Your personalized gateway to the best of Seoul’s hidden treasures</p>
+  </header>
+  <main class="container">
+    <section>
+      <h2>Explore Seoul</h2>
+      <div class="image-grid">
+        <img src="https://images.unsplash.com/photo-1547251100-cf99b5cfc2b1?auto=format&fit=crop&w=600&q=80" alt="Seoul Cityscape" />
+        <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80" alt="Mountains near Seoul" />
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Korean Dining" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Seoul Nightlife" />
+        <img src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?auto=format&fit=crop&w=600&q=80" alt="Korean Skincare" />
+      </div>
+    </section>
+    <section>
+      <h2>Testimonials</h2>
+      <div class="testimonials-container">
+        <div class="testimonial">"Absolutely unforgettable experience! The personalized tours showed me Seoul in ways no guidebook ever could." <strong>- Jessica W.</strong></div>
+        <div class="testimonial">"Thanks to SeoulUnlocked, I got into exclusive restaurants with ease. Highly recommend for anyone wanting the best local spots." <strong>- Marco T.</strong></div>
+        <div class="testimonial">"Perfect mix of city and nature adventures. The skincare clinic recommendation was spot on. I'll be back!" <strong>- Emily R.</strong></div>
+      </div>
+    </section>
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Your email" />
+        <label for="message">Your Request</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Describe what you are looking for..."></textarea>
+        <input type="submit" value="Send" />
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 SeoulUnlocked. All rights reserved.
+  </footer>
+</body>
+</html>
