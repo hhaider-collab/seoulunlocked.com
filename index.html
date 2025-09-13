@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SeoulUnlocked - Custom Guided Tours and Experiences</title>
+  <title>Seoul Unlocked - Custom Guided Tours and Experiences</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -88,4 +88,45 @@
     }
     .contact {
       max-width: 600px;
-      margin
+      margin: 0 auto 60px;
+      padding: 20px;
+      background: #222;
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact label {
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .contact input,
+    .contact textarea {
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+    .contact input[type="submit"] {
+      background: #00aaff;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact input[type="submit"]:hover {
+      background: #008ecc;
+    }
+    footer {
+      text-align: center;
+      padding: 12px 20px 40px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2
