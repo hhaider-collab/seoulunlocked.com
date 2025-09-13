@@ -37,5 +37,143 @@
       font-size: 1.3rem;
       margin-top: 16px;
       font-weight: 500;
-      text
-
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 40px 0 20px;
+      text-align: center;
+      color: #333;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .image-grid img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      object-fit: cover;
+      height: 180px;
+      transition: transform 0.3s ease;
+    }
+    .image-grid img:hover {
+      transform: scale(1.05);
+    }
+    .testimonials-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+    }
+    .testimonial {
+      display: inline-block;
+      background: #f4f4f4;
+      border-radius: 12px;
+      padding: 20px;
+      margin-right: 16px;
+      width: 280px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      vertical-align: top;
+      font-style: italic;
+    }
+    .testimonial strong {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #555;
+      font-style: normal;
+    }
+    .contact {
+      max-width: 600px;
+      margin: 0 auto 60px;
+      padding: 20px;
+      background: #222;
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact label {
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .contact input,
+    .contact textarea {
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+    .contact input[type="submit"] {
+      background: #00aaff;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact input[type="submit"]:hover {
+      background: #008ecc;
+    }
+    footer {
+      text-align: center;
+      padding: 12px 20px 40px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .testimonial {
+        width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SeoulUnlocked</h1>
+    <p>Your personalized gateway to the best of Seoul’s hidden treasures</p>
+  </header>
+  <main class="container">
+    <section>
+      <h2>Explore Seoul</h2>
+      <div class="image-grid">
+        <img src="https://images.unsplash.com/photo-1547251100-cf99b5cfc2b1?auto=format&fit=crop&w=600&q=80" alt="Seoul Cityscape" />
+        <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80" alt="Mountains near Seoul" />
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Korean Dining" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Seoul Nightlife" />
+        <img src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?auto=format&fit=crop&w=600&q=80" alt="Korean Skincare" />
+      </div>
+    </section>
+    <section>
+      <h2>Testimonials</h2>
+      <div class="testimonials-container">
+        <div class="testimonial">"Absolutely unforgettable experience! The personalized tours showed me Seoul in ways no guidebook ever could." <strong>- Jessica W.</strong></div>
+        <div class="testimonial">"Thanks to SeoulUnlocked, I got into exclusive restaurants with ease. Highly recommend for anyone wanting the best local spots." <strong>- Marco T.</strong></div>
+        <div class="testimonial">"Perfect mix of city and nature adventures. The skincare clinic recommendation was spot on. I'll be back!" <strong>- Emily R.</strong></div>
+      </div>
+    </section>
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Your email" />
+        <label for="message">Your Request</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Describe what you are looking for..."></textarea>
+        <input type="submit" value="Send" />
+      </form>
+    </section>
+  </main>
+  <footer>&copy; 2025 SeoulUnlocked. All rights reserved.</footer>
+</body>
+</html>
