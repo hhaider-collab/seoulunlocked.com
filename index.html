@@ -1,148 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seoul Unlocked</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit Korea</title>
   <style>
-    body, html {
-      margin: 0; padding: 0;
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
     }
+
+    header {
+      background: #000;
+      padding: 20px;
+    }
+
     section {
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      text-align: center;
       background-size: cover;
       background-position: center;
       position: relative;
     }
-    section::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4);
-    }
-    section > div {
-      position: relative;
-      z-index: 1;
+
+    section div {
+      background: rgba(0, 0, 0, 0.5);
       padding: 20px;
-      max-width: 800px;
+      border-radius: 10px;
     }
-    h1, h2 { margin-bottom: 1rem; }
-    .testimonials {
-      background: #111;
-      color: white;
-      padding: 80px 20px;
+
+    h1, h2 {
+      margin: 0;
+      padding: 10px 0;
     }
-    .testimonial {
-      display: none;
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-    }
-    .testimonial.active { display: block; }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 500px;
-      margin: auto;
-    }
-    input, textarea, button {
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    button {
-      background: #ff3366;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover { opacity: 0.9; }
   </style>
 </head>
 <body>
 
-  <!-- Hero / Cityscape -->
- <section style="background-image: url('images/namsan.jpg');">
-  <div>
-    <h1>Seoul Unlocked</h1>
- <p>Your insider pass to Seoul — from hidden restaurants to world-class skincare.</p>
-  </div>
-</section>
-  <!-- Mountains -->
-  <section style="background-image: url('images/bukhansan.jpg');
+  <header>
+    <h1>Discover Korea</h1>
+  </header>
+
+  <section style="background-image: url('images/bukhansan.jpg');">
     <div>
       <h2>Nature & Cityscapes</h2>
       <p>Climb serene peaks like Bukhansan, then see the skyline glow at night.</p>
     </div>
   </section>
 
-  <!-- Dining -->
-  <section style="background-image: url("images/bibimbap.jpg");
+  <section style="background-image: url('images/bibimbap.jpg');">
     <div>
-      <h2>Dining</h2>
-      <p>Eat at restaurants without reservations, explore street food, and savor true Korean flavors.</p>
+      <h2>Food & Culture</h2>
+      <p>From bibimbap to bustling markets — taste Korea’s rich traditions.</p>
     </div>
   </section>
 
-  <!-- Nightlife -->
-  <section style="background-image: url("images/euljiro.jpg");
+  <section style="background-image: url('images/hanbok.jpg');">
     <div>
-      <h2>Nightlife</h2>
-      <p>From speakeasies in Itaewon to neon-lit clubs in Gangnam — see Seoul after dark.</p>
+      <h2>History & Heritage</h2>
+      <p>Step back in time with hanbok and historic palaces in Seoul.</p>
     </div>
   </section>
 
-  <!-- Skincare -->
-  <section style="background-image: url("images/palace-roof.jpg");
+  <section style="background-image: url('images/nightlife.jpg');">
     <div>
-      <h2>Skincare & Aesthetics</h2>
-      <p>Discover elite clinics and treatments that aren’t on Instagram — real insider access.</p>
+      <h2>Modern Life</h2>
+      <p>Sing at a noraebang, sip soju with friends, and feel the city’s pulse.</p>
     </div>
   </section>
-
-  <!-- Testimonials -->
-  <div class="testimonials">
-    <h2>What Travelers Say</h2>
-    <div class="testimonial active">“I thought I knew Seoul, but Hassan unlocked doors I didn’t know existed.”</div>
-    <div class="testimonial">“He got us into a Michelin-starred place with no reservations — unforgettable!”</div>
-    <div class="testimonial">“The skincare clinic he found for me was better than anything I’ve seen online.”</div>
-    <div class="testimonial">“Every day felt like a curated adventure, tailored just for us.”</div>
-  </div>
-
-  <!-- Contact -->
-  <section style="background:#222; height:auto; padding:60px 20px; color:white;">
-    <div>
-      <h2>Contact Me</h2>
-      <p>Let’s design your unforgettable Seoul experience.</p>
-      <form action="mailto:seoulunlocked@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Tell me what kind of Seoul experience you’re looking for" rows="5"></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>
-
-  <script>
-    // Testimonial rotator
-    const testimonials = document.querySelectorAll('.testimonial');
-    let index = 0;
-    setInterval(() => {
-      testimonials[index].classList.remove('active');
-      index = (index + 1) % testimonials.length;
-      testimonials[index].classList.add('active');
-    }, 4000);
-  </script>
 
 </body>
 </html>
