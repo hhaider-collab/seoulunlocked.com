@@ -79,61 +79,42 @@
       <p>Sing at a noraebang, sip soju with friends, and feel the city’s pulse.</p>
     </div>
   </section>
-  
-  <!-- Testimonials -->
-  <section style="background:#000; color:white; height:auto; padding:80px 20px;">
-    <h2 style="margin-bottom:40px;">What Travelers Say</h2>
-    <div class="testimonial" style="font-size:1.2rem; max-width:700px; margin:0 auto; display:block;">
-      “I thought I knew Seoul, but Hassan unlocked doors I didn’t know existed.”
-    </div>
-    <div class="testimonial" style="font-size:1.2rem; max-width:700px; margin:0 auto; display:none;">
-      “He got us into a Michelin-starred place with no reservations — unforgettable!”
-    </div>
-    <div class="testimonial" style="font-size:1.2rem; max-width:700px; margin:0 auto; display:none;">
-      “The skincare clinic he found for me was better than anything I’ve seen online.”
-    </div>
-    <div class="testimonial" style="font-size:1.2rem; max-width:700px; margin:0 auto; display:none;">
-      “Every day felt like a curated adventure, tailored just for us.”
-    </div>
-  </section>
+  <!-- Updated testimonial styles and script -->
+<style>
+  .testimonial {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    background: rgba(255 255 255 / 0.1);
+    padding: 20px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: opacity 0.5s ease;
+  }
+  /* Hide all but first testimonial by default */
+  .testimonial:not(:first-child) {
+    display: none;
+  }
+</style>
 
-  <!-- Contact Section -->
-  <section style="background:#111; color:white; height:auto; padding:60px 20px;">
-    <div>
-      <h2>Contact Me</h2>
-      <p>Let’s design your unforgettable Seoul experience.</p>
-      <form action="https://formspree.io/f/xblabqyo" method="POST" style="max-width:600px; margin:0 auto; text-align:left;">
-        
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name" required 
-               style="width:100%; padding:12px; margin:8px 0; border-radius:5px; border:none;"><br>
+<section style="background:#000; color:white; padding:80px 20px;">
+  <h2 style="margin-bottom:40px;">What Travelers Say</h2>
+  <div class="testimonial">“I thought I knew Seoul, but Hassan unlocked doors I didn’t know existed.”</div>
+  <div class="testimonial">“He got us into a Michelin-starred place with no reservations — unforgettable!”</div>
+  <div class="testimonial">“The skincare clinic he found for me was better than anything I’ve seen online.”</div>
+  <div class="testimonial">“Every day felt like a curated adventure, tailored just for us.”</div>
+</section>
 
-        <label for="email">Email</label><br>
-        <input type="email" id="email" name="_replyto" required 
-               style="width:100%; padding:12px; margin:8px 0; border-radius:5px; border:none;"><br>
+<script>
+  const testimonials = document.querySelectorAll('.testimonial');
+  let currentIndex = 0;
+  setInterval(() => {
+    testimonials[currentIndex].style.display = 'none';
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    testimonials[currentIndex].style.display = 'block';
+  }, 4000);
+</script>
 
-        <label for="message">Message</label><br>
-        <textarea id="message" name="message" rows="5" required 
-                  style="width:100%; padding:12px; margin:8px 0; border-radius:5px; border:none;"></textarea><br>
-
-        <button type="submit" 
-                style="background:#e63946; color:white; border:none; padding:14px 20px; cursor:pointer; border-radius:5px; font-size:1rem;">
-          Send
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <script>
-    // Testimonial rotator
-    const testimonials = document.querySelectorAll('.testimonial');
-    let currentIndex = 0;
-    setInterval(() => {
-      testimonials[currentIndex].style.display = 'none';
-      currentIndex = (currentIndex + 1) % testimonials.length;
-      testimonials[currentIndex].style.display = 'block';
-    }, 4000);
-  </script>
-  
 </body>
 </html>
