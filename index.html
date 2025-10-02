@@ -264,7 +264,6 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-20 hero-bg text-white">
         <div class="container mx-auto px-6">
@@ -273,12 +272,23 @@
                 <p class="text-xl mb-12 opacity-90">
                     Tell us about your travel plans and we'll create a customized Seoul experience just for you.
                 </p>
-                <form class="max-w-2xl mx-auto">
+                <form action="mailto:seoulunlocked@gmail.com" method="post" enctype="text/plain" class="max-w-2xl mx-auto">
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <input type="text" placeholder="Your Name" class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50">
-                        <input type="email" placeholder="Your Email" class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50">
+                        <input type="text" name="name" placeholder="Your Name" class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" required>
+                        <input type="email" name="email" placeholder="Your Email" class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" required>
                     </div>
                     <div class="mb-6">
-                        <textarea placeholder="Tell us about your travel plans and interests..." rows="5" class="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline
+                        <textarea name="ideal-trip" placeholder="Describe your ideal Seoul trip..." rows="4" class="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" required></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <textarea name="white-whale" placeholder="What's your Seoul 'white whale' - that one experience you've always dreamed of? (optional)" rows="3" class="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
+                    </div>
+                    <button type="submit" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+                        Submit Your Seoul Dream
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
