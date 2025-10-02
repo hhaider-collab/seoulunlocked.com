@@ -1,120 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visit Korea</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-    }
-
-    header {
-      background: #000;
-      padding: 20px;
-    }
-
-    section {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-
-    section div {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    h1, h2 {
-      margin: 0;
-      padding: 10px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seoul Unlocked - Curated Korean Adventures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('http://static.photos/cityscape/1200x630/1') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .section-1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('http://static.photos/food/1200x630/2') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .section-2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('http://static.photos/nightlife/1200x630/3') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .section-3 {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('http://static.photos/wellness/1200x630/4') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .section-4 {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('http://static.photos/market/1200x630/5') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
 </head>
-<body>
+<body x-data="{ mobileMenuOpen: false, formSubmitted: false }" class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-gray-900">Seoul<span class="text-red-600">Unlocked</span></a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-red-600 transition">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-red-600 transition">Services</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-red-600 transition">Testimonials</a>
+                    <a href="#contact" class="text-gray-700 hover:text-red-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" class="md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-red-600">About</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-red-600">Services</a>
+                <a href="#testimonials" class="block px-3 py-2 text-gray-700 hover:text-red-600">Testimonials</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-red-600">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <header>
-    <h1>Seoul Unlocked</h1>
-  </header>
-<!-- Hero / Cityscape -->
- <section style="background-image: url('images/namsan.jpg');">
-  <div>
-    <h1>Discover the City</h1>
- <p>Your insider pass to Seoul — from hidden restaurants to world-class skincare.</p>
-  </div>
-</section>
-  
-  <section style="background-image: url('images/bukhansan.jpg');">
-    <div>
-      <h2>Nature & Cityscapes</h2>
-      <p>Climb serene peaks like Bukhansan, then see the skyline glow at night.</p>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero-section h-screen flex items-center justify-center text-white pt-16">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 font-serif">Experience Seoul Like Never Before</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Curated adventures beyond the tourist trails</p>
+            <a href="#contact" class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-medium transition">Start Your Journey</a>
+        </div>
+    </section>
 
-  <section style="background-image: url('images/bibimbap.jpg');">
-    <div>
-      <h2>Food & Culture</h2>
-      <p>From bibimbap to bustling markets — taste Korea’s rich traditions.</p>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Why Seoul Unlocked?</h2>
+            <p class="text-lg mb-8">Seoul is a city of contrasts - ancient palaces next to futuristic skyscrapers, quiet tea houses beside buzzing nightlife districts. Most visitors only scratch the surface. We help you experience the real Seoul.</p>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <i data-feather="map" class="w-12 h-12 mx-auto text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Hidden Gems</h3>
+                    <p>Discover places you won't find in guidebooks or on Instagram.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <i data-feather="star" class="w-12 h-12 mx-auto text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">VIP Access</h3>
+                    <p>Get reservations at impossible-to-book restaurants and exclusive venues.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <i data-feather="user" class="w-12 h-12 mx-auto text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Local Experts</h3>
+                    <p>Our team has lived in Seoul for decades and knows every neighborhood intimately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section style="background-image: url('images/temple-hanbok.jpg');">
-    <div>
-      <h2>History & Heritage</h2>
-      <p>Step back in time with hanbok and historic palaces in Seoul.</p>
-    </div>
-  </section>
+    <!-- Food Section -->
+    <section id="services" class="section-1 parallax py-32 px-4">
+        <div class="max-w-2xl mx-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg fade-in">
+            <h2 class="text-3xl font-bold mb-6 font-serif">Culinary Adventures</h2>
+            <p class="mb-6">Seoul's dining scene is legendary, but the best places often don't have English menus or online reservations. We'll get you into:</p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                    <i data-feather="check-circle" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Michelin-starred hanwoo (Korean beef) restaurants that book out months in advance</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="check-circle" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Hidden pojangmacha (street food tents) serving the best tteokbokki in the city</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="check-circle" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Private chef's table experiences at Korea's most innovative restaurants</span>
+                </li>
+            </ul>
+            <a href="#contact" class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition">Reserve Your Table</a>
+        </div>
+    </section>
 
-  <section style="background-image: url('images/euljiro.jpg');">
-    <div>
-      <h2>Modern Life</h2>
-      <p>Sing at a noraebang, sip soju with friends, and feel the city’s pulse.</p>
-    </div>
-  </section>
-  <!-- Updated testimonial styles and script -->
-<style>
-  .testimonial {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 20px auto;
-    border-radius: 10px;
-    background: rgba(255 255 255 / 0.1);
-    padding: 20px;
-    color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    transition: opacity 0.5s ease;
-  }
-  /* Hide all but first testimonial by default */
-  .testimonial:not(:first-child) {
-    display: none;
-  }
-</style>
+    <!-- Nightlife Section -->
+    <section class="section-2 parallax py-32 px-4">
+        <div class="max-w-2xl ml-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg fade-in">
+            <h2 class="text-3xl font-bold mb-6 font-serif">Nightlife Beyond Hongdae</h2>
+            <p class="mb-6">Skip the tourist traps and experience Seoul's legendary nightlife like a local:</p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                    <i data-feather="moon" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Members-only speakeasies with craft cocktails using traditional Korean ingredients</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="music" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Underground live music venues showcasing Korea's indie scene</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="users" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Private karaoke rooms with English song selections and premium soju service</span>
+                </li>
+            </ul>
+            <a href="#contact" class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition">Plan Your Night Out</a>
+        </div>
+    </section>
 
-<section style="background:#000; color:white; padding:80px 20px;">
-  <h2 style="margin-bottom:40px;">What Travelers Say</h2>
-  <div class="testimonial">“I thought I knew Seoul, but Hassan unlocked doors I didn’t know existed.”</div>
-  <div class="testimonial">“He got us into a Michelin-starred place with no reservations — unforgettable!”</div>
-  <div class="testimonial">“The skincare clinic he found for me was better than anything I’ve seen online.”</div>
-  <div class="testimonial">“Every day felt like a curated adventure, tailored just for us.”</div>
-</section>
+    <!-- Skincare Section -->
+    <section class="section-3 parallax py-32 px-4">
+        <div class="max-w-2xl mx-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg fade-in">
+            <h2 class="text-3xl font-bold mb-6 font-serif">Celebrity Skincare Secrets</h2>
+            <p class="mb-6">Korean skincare is world-famous, but the best clinics don't advertise to tourists. We'll connect you with:</p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                    <i data-feather="activity" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Dermatologists who treat K-pop stars and actors (with English-speaking staff)</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="heart" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Customized skincare regimens using products not available outside Korea</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="shield" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Non-invasive treatments that deliver dramatic results with minimal downtime</span>
+                </li>
+            </ul>
+            <a href="#contact" class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition">Book Your Consultation</a>
+        </div>
+    </section>
 
-<script>
-  const testimonials = document.querySelectorAll('.testimonial');
-  let currentIndex = 0;
-  setInterval(() => {
-    testimonials[currentIndex].style.display = 'none';
-    currentIndex = (currentIndex + 1) % testimonials.length;
-    testimonials[currentIndex].style.display = 'block';
-  }, 4000);
-</script>
+    <!-- Markets Section -->
+    <section class="section-4 parallax py-32 px-4">
+        <div class="max-w-2xl mr-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg fade-in">
+            <h2 class="text-3xl font-bold mb-6 font-serif">Authentic Market Experiences</h2>
+            <p class="mb-6">Go beyond the tourist markets with our expert guides:</p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                    <i data-feather="shopping-bag" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Wholesale fabric markets where Seoul's top designers source materials</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="coffee" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Traditional tea markets with centuries-old family businesses</span>
+                </li>
+                <li class="flex items-start">
+                    <i data-feather="home" class="text-red-600 mr-2 mt-1"></i>
+                    <span>Antique markets where you can find authentic Korean artifacts</span>
+                </li>
+            </ul>
+            <a href="#contact" class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full transition">Schedule Your Tour</a>
+        </div>
+    </section>
 
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 font-serif">What Our Clients Say</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/1" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold">Sarah J.</h4>
+                            <p class="text-sm text-gray-600">New York</p>
+                        </div>
+                    </div>
+                    <p class="text-left italic">"Seoul Unlocked got us reservations at a tiny hanwoo restaurant that wasn't in any guidebooks. The owner doesn't normally take foreign customers but welcomed us warmly thanks to their introduction. Best meal of our trip!"</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/2" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold">Michael T.</h4>
+                            <p class="text-sm text-gray-600">London</p>
+                        </div>
+                    </div>
+                    <p class="text-left italic">"The skincare clinic they recommended was incredible. No pushy sales, just expert advice and treatments tailored to my skin. My complexion has never looked better!"</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/3" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold">Lisa & David</h4>
+                            <p class="text-sm text-gray-600">Sydney</p>
+                        </div>
+                    </div>
+                    <p class="text-left italic">"Our guide took us to the most amazing underground bars we never would have found on our own. We felt like locals instead of tourists!"</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/4" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold">James K.</h4>
+                            <p class="text-sm text-gray-600">Hong Kong</p>
+                        </div>
+                    </div>
+                    <p class="text-left italic">"The antique market tour was worth every penny. I found unique pieces for my collection that I couldn't have sourced anywhere else."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center font-serif">Ready for Your Seoul Adventure?</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto">Tell us about your travel plans and we'll create a customized Seoul experience just for you.</p>
+            
+            <div x-show="!formSubmitted" class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <form action="https://formspree.io/f/seoulunlocked@gmail.com" method="POST" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block mb-2 font-medium">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="dates" class="block mb-2 font-medium">Travel Dates</label>
+                        <input type="text" id="dates" name="dates" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Approximate dates of your trip">
+                    </div>
+                    <div>
+                        <label for="interests" class="block mb-2 font-medium">What interests you most about Seoul?</label>
+                        <select id="interests" name="interests" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                            <option value="">Select an option</option>
+                            <option value="food">Food & Dining</option>
+                            <option value="nightlife">Nightlife & Entertainment</option>
+                            <option value="skincare">Skincare & Beauty</option>
+                            <option value="shopping">Shopping & Markets</option>
+                            <option value="culture">Culture & History</option>
+                            <option value="all">All of the above!</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-2 font-medium">Tell us more about your ideal Seoul experience</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition">Submit Request</button>
+                </form>
+            </div>
+            
+            <div x-show="formSubmitted" x-transition class="text-center py-12">
+                <i data-feather="check-circle" class="w-16 h-16 mx-auto text-green-500 mb-6"></i>
+                <h3 class="text-2xl font-bold mb-4">Thank You!</h3>
+                <p class="max-w-md mx-auto">We've received your request and will be in touch within 24 hours to start planning your perfect Seoul adventure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Seoul Unlocked</h3>
+                    <p>Curating extraordinary experiences in Seoul for discerning travelers.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-red-400 transition">About</a></li>
+                        <li><a href="#services" class="hover:text-red-400 transition">Services</a></li>
+                        <li><a href="#testimonials" class="hover:text-red-400 transition">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-red-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="mail" class="w-5 h-5 mr-2 mt-1"></i>
+                            <span>seoulunlocked@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="phone" class="w-5 h-5 mr-2 mt-1"></i>
+                            <span>+82 10 8459 4443</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-red-400 transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="hover:text-red-400 transition"><i data-feather="facebook"></i></a>
+                        <a href="#" class="hover:text-red-400 transition"><i data-feather="twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Seoul Unlocked. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Trigger on load for elements already in view
+            
+            // Form submission handling
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            form.reset();
+                            this.formSubmitted = true;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
